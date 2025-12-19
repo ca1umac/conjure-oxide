@@ -15,8 +15,6 @@ pub(crate) const OPTIMISATIONS_HELP_HEADING: Option<&str> = Some("Optimisations"
 /// All subcommands of conjure-oxide
 #[derive(Clone, Debug, Subcommand)]
 pub enum Command {
-    /// Solve a model
-    Solve(solve::Args),
     /// Print the JSON info file schema
     PrintJsonSchema,
     /// Tests whether the Essence model is solvable with Conjure Oxide, and whether it gets the
