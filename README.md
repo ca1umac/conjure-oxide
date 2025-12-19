@@ -1,82 +1,38 @@
-# Conjure Oxide
+# Oxidelings
 
-This repository contains the in-progress Conjure Oxide constraints modelling
-tool and its dependencies. 
+This is a shortterm project for me to gain experience with oxide from e2e. 
+The goal is to take something that works, break it, and make it a task to fix it.
 
-<https://conjure-cp.github.io/conjure-oxide/>
+There are 6 projects:
+1. CLI
+2. Parser
+3. Model
+4. Rule Engine
+5. Solver Adapter
+6. Testing
 
-## Installation
+Which follow oxide through its runtime. 
 
-### Building from Source
+## CLI Project
+**Objective**: Implement the `solve` command 
 
-The following dependencies are required:
+Other outcomes include learning about clap, traits, derive, impl, enums, and structs.
 
-* [Conjure](https://github.com/conjure-cp/conjure) (including solvers)
-* Clang 
-* Libclang
-* Cmake
-* Rust, installed using [rustup](https://rustup.rs/)
+## Parser
+**Objective**: Implement TBC (letting? find?)
 
-**Ensure that Conjure is placed early in your PATH to avoid conflicts with
-ImageMagick's conjure command!**
+Other outcomes include learning about the native parser, tree-sitter, ...
 
-Run `cargo install --path crates/conjure-cp-cli` to install `conjure-oxide`.
+## Model
+**Objective**: Implement TBC (Literals?)
 
-## Repository Structure
+Other outcomes include learning about ground and unresolved domains, ...
 
-This repository holds the source-code for both `conjure-oxide` itself, and
-various related projects.
+## Rule Engine
+**Objective**: Implement TBC (Bubble?)
 
-### `conjure-oxide` crates
+## Solver Adapter
+**Objective**: Implement TBC (partial part of minion? or build a small rust solver that takes little adaptation?)
 
-The following crates define the `conjure-oxide` system:
-
-- [`conjure-cp`](./crates/conjure-cp) defines `conjure-oxide` as a library. It
-  re-exports symbols from the following internal crates:
-
-  + [`conjure-cp-core`](./crates/conjure-cp-core)
-  + [`conjure-cp-enum-compatibility-macro`](./crates/conjure-cp-enum-compatibility-macro)
-  + [`conjure-cp-essence-macros`](./crates/conjure-cp-essence-macros)
-  + [`conjure-cp-essence-parser`](./crates/conjure-cp-essence-parser)
-  + [`conjure-cp-rule-macros`](./crates/conjure-cp-rule-macros)
-
-
-- [`conjure-cp-cli`](./crates/conjure-cp-cli) implements the `conjure-oxide`
-  command line interface, and exports various CLI related utilities for use by
-  the integration tester.
-- [`conjure-cp-rules`](./crates/conjure-cp-rules) defines the default rewrite
-  rules used by `conjure-oxide`.
-- [`tests-integration`](./tests-integration) is an internal crate containing
-  integration tests for `conjure-oxide`.
-- [`conjure-cp-lsp`](./crates/conjure-cp-lsp/) implements the language server
-  for use in a VSCode extension (as outlined in Language Server Protocol) for
-  `conjure-oxide`.
-
-### Ecosystem crates
-
-The following crates are related to, or used by, `conjure-oxide`, but can be
-used in isolation from it:
-
-- [`minion-sys`](./crates/minion-sys) defines FFI bindings for the [Minion CP solver](https://github.com/minion/minion).
-- [`tree-morph`](./crates/tree-morph) provides a framework for implementing
-  term-rewriting systems. 
-- [`tree-sitter-essence`](./crates/tree-sitter-essence) defines a tree-sitter
-  grammar for Essence.
-- [`randicheck`](./crates/randicheck)
-
-### Related Projects 
-
-The following projects are used by, and developed alongside, `conjure-oxide`,
-but are kept in their own repositories:
-
-- [`uniplate`](https://github.com/conjure-cp/uniplate)
-- [`polyquine`](https://github.com/gskorokhod/polyquine)
-
-## Licence
-
-This project is being produced by staff and students of University of St
-Andrews, and is licenced under the [Mozilla Public Licence 2.0](./LICENSE).
-
-<!-- vim: cc=80
--->
-
+## Testing
+**Objective**: Add testing for everything implemented?
