@@ -1,5 +1,8 @@
 # Oxidelings
 
+## Getting Started
+There are 6 challenges. Switch to each branch in turn (e.g. 1-CLI), and read the instructions for that challenge in the `~INSTRUCTIONS` folder.
+
 This is a shortterm project for me to gain experience with oxide from e2e. 
 The goal is to take something that works, break it, and make it a task to fix it.
 
