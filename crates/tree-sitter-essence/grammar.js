@@ -21,22 +21,29 @@ module.exports = grammar ({
           field("arithmetic_expr", $.arithmetic_expr)
         ))
       ),
-      seq("find", commaSep1(field("find_statement", $.find_statement))),
+
+      // ***** ADD:
+      //  adds rule PROGRAM -> find $find_statement,+
+      seq("find", commaSep1(field("find_statement", $.find_statement))), 
+      // ***** End
+
       seq(
         "such that", 
         commaSep1(choice(field("bool_expr", $.bool_expr), field("atom", $.atom), field("comparison_expr", $.comparison_expr))), 
       ),
       seq("letting", commaSep1(field("letting_statement", $.letting_statement))),
       field("dominance_relation", $.dominance_relation),
+      
+      // ***** Do not mind this
       // field("find", $.FIND),
       // field("letting", $.LETTING),
       // field("such_that", $.SUCH_THAT),
     )),
 
     SUCH_THAT: $ => "such that",
-    FIND: $ => "find",
+    FIND: $ => "find",            // ***** Do not mind this
     LETTING: $ => "letting",
-    COLON: $ => ":",
+    COLON: $ => ":",              // *DO* mind this; this means we can use $.COLON
 
     single_line_comment: $ => token(seq('$', /.*/)),
 
@@ -62,11 +69,16 @@ module.exports = grammar ({
     metavar: $ => seq("&", field("identifier", $.identifier)),
 
     //find statements
+    // **** ADD:
+    //  Creates rule $find_statement -> $variables+ : $domain
+    //  $.variable_list and $.domain are other non-terminals which are already provided.
     find_statement: $ => seq(
       field("variables", $.variable_list),
-      field("colon", $.COLON),
+      field("colon", $.COLON),                // Could this just be ":" ?
       field("domain", $.domain),
     ),
+    // ***** End
+
     variable_list: $ => commaSep1($.identifier),
 
     domain: $ => choice(
