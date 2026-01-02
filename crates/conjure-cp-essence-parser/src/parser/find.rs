@@ -18,6 +18,10 @@ pub fn parse_find_statement(
 ) -> Result<BTreeMap<Name, DomainPtr>, EssenceParseError> {
     let mut vars = BTreeMap::new();
 
+
+    // The BTreeMap expects values to be of type DomainPtr. This is given by the
+    //  `parse_domain` function. This function in turn requires the domain node in the
+    //  CST, which is given by looking at the children of the find_statement node.
     let domain = find_statement
         .child_by_field_name("domain")
         .expect("No domain found in find statement");
@@ -26,6 +30,7 @@ pub fn parse_find_statement(
     let variable_list = find_statement
         .child_by_field_name("variables")
         .expect("No variable list found");
+
     for variable in named_children(&variable_list) {
         let variable_name = &source_code[variable.start_byte()..variable.end_byte()];
         vars.insert(Name::user(variable_name), domain.clone());
