@@ -21,7 +21,10 @@ module.exports = grammar ({
           field("arithmetic_expr", $.arithmetic_expr)
         ))
       ),
-      seq("find", commaSep1(field("find_statement", $.find_statement))),
+
+      // TODO: Add "find $.find_statement"
+      // seq("find", commaSep1(field("find_statement", $.find_statement))),
+
       seq(
         "such that", 
         commaSep1(choice(field("bool_expr", $.bool_expr), field("atom", $.atom), field("comparison_expr", $.comparison_expr))), 
@@ -34,7 +37,7 @@ module.exports = grammar ({
     )),
 
     SUCH_THAT: $ => "such that",
-    FIND: $ => "find",
+    // FIND: $ => "find",
     LETTING: $ => "letting",
     COLON: $ => ":",
 
@@ -61,12 +64,13 @@ module.exports = grammar ({
     //meta-variable (aka template argument)
     metavar: $ => seq("&", field("identifier", $.identifier)),
 
-    //find statements
-    find_statement: $ => seq(
-      field("variables", $.variable_list),
-      field("colon", $.COLON),
-      field("domain", $.domain),
-    ),
+    // TODO: find statements
+    // find_statement: $ => seq(
+    //   field("variables", $.variable_list),
+    //   field("colon", $.COLON),
+    //   field("domain", $.domain),
+    // ),
+
     variable_list: $ => commaSep1($.identifier),
 
     domain: $ => choice(
