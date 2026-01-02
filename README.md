@@ -21,10 +21,11 @@ Which follow oxide through its runtime.
 
 Other outcomes include learning about clap, traits, derive, impl, enums, and structs.
 
-## Parser
-**Objective**: Implement TBC (letting? find?)
 
-Other outcomes include learning about the native parser, tree-sitter, ...
+## Parser
+**Objective**: Implement Find
+
+Other outcomes include learning about the native parser, tree-sitter, B-Trees, idiomatic rust (`?`, `.expect()`)
 
 ## Model
 **Objective**: Implement TBC (Literals?)
